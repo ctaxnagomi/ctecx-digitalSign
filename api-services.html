@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>API Services - CTECX-DigitalSign</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="favicon-192x192.png">
+    <meta name="theme-color" content="#00d4ff">
+</head>
+<body>
+    <div class="container">
+        <header class="glass-morphism">
+            <div class="header-wrapper">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="ctex-logo.webp" alt="CTECX Logo" class="logo-image">
+                    </div>
+                    <div class="logo-text-group">
+                        <span class="logo-text">CTECX</span>
+                        <span class="logo-subtext">DigitalSign</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="ai-integrated.html" class="nav-link">AI INTEGRATED</a>
+                    <a href="api-services.html" class="nav-link">API Services</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero-section glass-morphism" style="background: linear-gradient(135deg, #00d4ff 0%, #00a8cc 100%); color: white;">
+            <div class="hero-content">
+                <h1>⚡ API Services & Enterprise Solutions</h1>
+                <p class="hero-subtitle" style="color: rgba(255,255,255,0.9);">Integrate Digital Signatures into your platform with our powerful REST API</p>
+            </div>
+        </section>
+
+        <section class="signature-section">
+            <div class="signature-container">
+                <!-- Pricing Cards -->
+                <div class="pricing-section">
+                    <h2>💰 Pricing Plans</h2>
+                    
+                    <div class="pricing-grid">
+                        <!-- Starter Plan -->
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h3>Starter</h3>
+                                <p class="price">Free</p>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>✅ 10 signatures/month</li>
+                                <li>✅ Basic PDF support</li>
+                                <li>✅ Web interface only</li>
+                                <li>✅ Community support</li>
+                                <li>❌ No API access</li>
+                            </ul>
+                            <button class="btn btn-secondary" onclick="selectPlan('starter')">Get Started</button>
+                        </div>
+
+                        <!-- Professional Plan -->
+                        <div class="pricing-card featured">
+                            <div class="pricing-header">
+                                <div class="badge-pro">POPULAR</div>
+                                <h3>Professional</h3>
+                                <p class="price">$29<span>/month</span></p>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>✅ Unlimited signatures</li>
+                                <li>✅ Advanced PDF features</li>
+                                <li>✅ API access (100 calls/day)</li>
+                                <li>✅ Email support</li>
+                                <li>✅ Custom branding</li>
+                            </ul>
+                            <button class="btn btn-primary" onclick="selectPlan('professional')">Start Free Trial</button>
+                        </div>
+
+                        <!-- Enterprise Plan -->
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h3>Enterprise</h3>
+                                <p class="price">Custom</p>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>✅ Unlimited everything</li>
+                                <li>✅ Custom SLA</li>
+                                <li>✅ Unlimited API calls</li>
+                                <li>✅ Priority 24/7 support</li>
+                                <li>✅ Dedicated infrastructure</li>
+                            </ul>
+                            <button class="btn btn-primary" onclick="selectPlan('enterprise')">Contact Sales</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Documentation -->
+                <div class="api-section">
+                    <h2>📚 API Documentation</h2>
+                    
+                    <div class="api-endpoint">
+                        <h3>POST /api/v1/signature/analyze</h3>
+                        <p>Analyze a PDF and detect signature boxes with AI</p>
+                        
+                        <div class="code-block">
+<pre>curl -X POST https://api.ctecx.digitalsign.app/api/v1/signature/analyze \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -F "file=@document.pdf"</pre>
+                        </div>
+
+                        <div class="response-block">
+<pre>{
+  "status": "success",
+  "pages": 2,
+  "boxes": [
+    {
+      "page": 1,
+      "x": 150,
+      "y": 600,
+      "width": 300,
+      "height": 100,
+      "confidence": 0.95,
+      "text": "Signature Here"
+    }
+  ],
+  "processingTime": 1200
+}</pre>
+                        </div>
+                    </div>
+
+                    <div class="api-endpoint">
+                        <h3>POST /api/v1/signature/sign</h3>
+                        <p>Sign a document and return signed PDF</p>
+                        
+                        <div class="code-block">
+<pre>curl -X POST https://api.ctecx.digitalsign.app/api/v1/signature/sign \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -F "file=@document.pdf" \
+  -F "signature=@signature.png" \
+  -F "position=0:150:600:300:100"</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Section -->
+                <div class="contact-section">
+                    <h2>📧 Get a Custom Quote</h2>
+                    <p>For Team Plans, Enterprise Solutions, or Custom Integrations</p>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="plan">Plan Interest *</label>
+                            <select id="plan" name="plan" required>
+                                <option value="">Select a plan</option>
+                                <option value="team">Team Plan (5-50 members)</option>
+                                <option value="enterprise">Enterprise Solution</option>
+                                <option value="custom">Custom Integration</option>
+                                <option value="other">Other Inquiry</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us about your requirements..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: var(--spacing-lg);">Send Inquiry</button>
+                    </form>
+                </div>
+
+                <!-- Team Plan Details -->
+                <div class="team-plan">
+                    <h2>👥 Team Plan (Custom)</h2>
+                    <div class="team-features">
+                        <div class="feature-card">
+                            <h4>👥 5-50 Members</h4>
+                            <p>Perfect for teams that need collaborative signing</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🔐 Access Control</h4>
+                            <p>Role-based permissions and user management</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>📊 Analytics</h4>
+                            <p>Detailed signing reports and audit logs</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🤝 Collaboration</h4>
+                            <p>Team workflows and approval processes</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>💼 Enterprise Support</h4>
+                            <p>Dedicated account manager and priority support</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>🔗 API Integration</h4>
+                            <p>Full API access for custom integrations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="glass-morphism">
+            <p>&copy; 2026 CTECX-DigitalSign | Free to Use | <a href="https://github.com/ctaxnagomi" target="_blank">Support Development</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Plan Selection Handler
+        function selectPlan(plan) {
+            document.getElementById('plan').value = plan;
+            document.getElementById('contactForm').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('name').focus();
+        }
+
+        // Form Submission Handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const plan = document.getElementById('plan').value;
+            const message = document.getElementById('message').value;
+            const phone = document.getElementById('phone').value;
+
+            // Construct mailto link
+            const subject = `API Services Inquiry - ${plan}`;
+            const body = `
+Hello,
+
+I am interested in ${plan} plan for CTECX-DigitalSign API Services.
+
+Name: ${name}
+Email: ${email}
+Company: ${company}
+Phone: ${phone}
+
+Message:
+${message}
+
+---
+Sent from CTECX-DigitalSign API Services Page
+            `.trim();
+
+            const mailtoLink = `mailto:ctaxnagomi@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Open mail client
+            window.location.href = mailtoLink;
+
+            // Show confirmation
+            alert('Opening your email client. If it doesn\'t open, please contact us directly at: ctaxnagomi@gmail.com');
+        });
+    </script>
+</body>
+</html>

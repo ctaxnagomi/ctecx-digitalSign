@@ -1,0 +1,84 @@
+name = "ctecx-digitalsign"
+type = "javascript"
+account_id = ""
+workers_dev = true
+main = "src/index.js"
+site = { bucket = "public" }
+
+# Build configuration
+[build]
+command = "npm run build"
+watch_paths = ["src/**/*.js", "public/**/*"]
+cwd = "."
+upload = { format = "service-worker" }
+
+[build.upload]
+format = "service-worker"
+
+# Environment variables
+[env.production]
+account_id = ""
+workers_dev = false
+name = "ctecx-digitalsign"
+routes = [
+  { pattern = "api.ctecx.digitalsign.app/*", zone_id = "" },
+]
+
+# Development environment
+[env.development]
+account_id = ""
+workers_dev = true
+name = "ctecx-digitalsign-dev"
+
+# KV Namespace bindings (optional, for caching)
+[[kv_namespaces]]
+binding = "STORAGE"
+id = ""
+preview_id = ""
+
+[env.production.kv_namespaces]
+binding = "STORAGE"
+id = ""
+preview_id = ""
+
+# Durable Objects (optional, for stateful operations)
+[[durable_objects.bindings]]
+name = "SIGNATURES"
+class_name = "SignatureStore"
+environment = "production"
+
+# Triggers (optional, for scheduled processing)
+[triggers]
+crons = ["0 0 * * *"]  # Daily at midnight UTC
+
+# Observability
+[observability]
+enabled = true
+
+# Limits
+[limits]
+cpu_milliseconds = 50000
+
+# Cache configuration
+[cache]
+default_ttl = 3600  # 1 hour
+max_ttl = 31536000  # 1 year
+
+# CORS configuration
+[[unsafe.bindings]]
+name = "CORS"
+type = "service"
+service = "cors-handler"
+
+# Custom domain configuration (update with your domain)
+[custom_domain]
+# name = "api.ctecx.digitalsign.app"
+# zone_id = "your-zone-id"
+
+# Logging configuration
+[observability.logging]
+enabled = true
+level = "debug"
+
+# Analytics Engine
+[analytics_engine_datasets]

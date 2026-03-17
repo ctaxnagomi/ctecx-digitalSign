@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CTECX-DigitalSign</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64x64.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="favicon-128x128.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="favicon-256x256.png">
+    <link rel="apple-touch-icon" href="favicon-192x192.png">
+    <meta name="theme-color" content="#00d4ff">
+</head>
+<body>
+    <div class="container">
+        <header class="glass-morphism">
+            <div class="header-wrapper">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="ctex-logo.webp" alt="CTECX Logo" class="logo-image">
+                    </div>
+                    <div class="logo-text-group">
+                        <span class="logo-text">CTECX</span>
+                        <span class="logo-subtext">DigitalSign</span>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#pdpr" class="nav-link">PDPR</a>
+                    <a href="ai-integrated.html" class="nav-link">AI INTEGRATED</a>
+                    <a href="api-services.html" class="nav-link">API Services</a>
+                    <button id="patchNotesBtn" class="nav-link nav-button" title="View latest patch notes">
+                        <span class="badge new-badge">NEW</span> Patch Notes
+                    </button>
+                    <a href="#how-to-use" class="nav-link">How to Use</a>
+                </nav>
+            </div>
+        </header>
+
+        <section class="hero-section glass-morphism">
+            <div class="hero-content">
+                <h2>Trusted by Thousands</h2>
+                <div class="carousel-wrapper">
+                    <div class="visitor-counter">
+                        <span id="visitorCount" class="visitor-number">5,762</span>
+                        <span class="visitor-label">Visitors</span>
+                    </div>
+                </div>
+                <p class="hero-subtitle">Join our growing community of digital signature users</p>
+            </div>
+        </section>
+
+        <section class="signature-section">
+            <div class="signature-container">
+                <h2>Sign Your Document</h2>
+                
+                <div class="signature-content">
+                    <div class="controls glass-morphism">
+                        <div class="control-group">
+                            <label for="penSize">Pen Size</label>
+                            <div class="slider-container">
+                                <input type="range" id="penSize" min="1" max="20" value="3">
+                                <span id="sizeValue" class="value-badge">3</span>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label for="penColor">Pen Color</label>
+                            <input type="color" id="penColor" value="#00d4ff">
+                        </div>
+
+                        <div class="control-group">
+                            <label for="backgroundColor">Background</label>
+                            <select id="backgroundColor">
+                                <option value="transparent">Transparent</option>
+                                <option value="white">White</option>
+                                <option value="light">Light</option>
+                            </select>
+                        </div>
+
+                        <div class="button-group">
+                            <button id="clearBtn" class="btn btn-secondary" title="Clear signature">
+                                <span class="icon">🗑️</span>
+                                <span class="btn-text">Clear</span>
+                            </button>
+                            <button id="resetBtn" class="btn btn-secondary" title="Reset all settings">
+                                <span class="icon">↻</span>
+                                <span class="btn-text">Reset</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="canvas-section">
+                        <div class="canvas-wrapper glass-morphism">
+                            <canvas id="signatureCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="download-section glass-morphism">
+            <h2>Download Signature</h2>
+            <div class="download-buttons">
+                <button id="downloadPNG" class="btn btn-primary" title="Download as PNG with transparency">
+                    <span class="icon">📥</span>
+                    <span>PNG</span>
+                </button>
+                <button id="downloadJPG" class="btn btn-primary" title="Download as JPG">
+                    <span class="icon">📥</span>
+                    <span>JPG</span>
+                </button>
+                <button id="downloadWebP" class="btn btn-primary" title="Download as WebP with transparency">
+                    <span class="icon">📥</span>
+                    <span>WebP</span>
+                </button>
+            </div>
+        </div>
+
+        <footer class="glass-morphism">
+            <p>&copy; 2026 CTECX-DigitalSign</p>
+        </footer>
+    </div>
+
+    <!-- Patch Notes Modal -->
+    <div id="patchNotesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🚀 What's New - Patch Notes v1.1</h2>
+                <button class="modal-close" id="closePatchNotes">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="patch-section">
+                    <h3>✨ New Features</h3>
+                    <ul>
+                        <li><strong>AI Integration:</strong> Upload PDFs and auto-detect signature boxes with intelligent pattern matching</li>
+                        <li><strong>API Services:</strong> Enterprise API for integrating digital signatures into your platform</li>
+                        <li><strong>Patch Notes Portal:</strong> Stay updated with latest features and improvements</li>
+                    </ul>
+                </div>
+                <div class="patch-section">
+                    <h3>🔧 Improvements</h3>
+                    <ul>
+                        <li>Improved scrollable landing page layout</li>
+                        <li>Enhanced canvas rendering performance (60 FPS)</li>
+                        <li>Better responsive design for mobile devices</li>
+                        <li>Optimized PDF processing pipeline</li>
+                    </ul>
+                </div>
+                <div class="patch-section">
+                    <h3>🐛 Bug Fixes</h3>
+                    <ul>
+                        <li>Fixed header visibility on desktop at 100% zoom</li>
+                        <li>Resolved canvas scrolling issues</li>
+                        <li>Improved favicon loading on all browsers</li>
+                    </ul>
+                </div>
+                <div class="patch-section">
+                    <h3>📅 Version Info</h3>
+                    <p><strong>Version:</strong> v1.1.0</p>
+                    <p><strong>Released:</strong> March 17, 2026</p>
+                    <p><strong>Developer:</strong> Wan Mohd Azizi (CTECX Deckergui Agentic Integrated System)</p>
+                    <p><strong>License:</strong> Free to Use | <a href="https://github.com/ctaxnagomi" target="_blank">Donate via GitHub</a></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="closePatchNotesBtn" class="btn btn-primary">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Patch Notes Modal Handler
+        const patchNotesBtn = document.getElementById('patchNotesBtn');
+        const patchNotesModal = document.getElementById('patchNotesModal');
+        const closePatchNotesBtn = document.getElementById('closePatchNotes');
+        const closePatchNotesBtn2 = document.getElementById('closePatchNotesBtn');
+
+        patchNotesBtn.addEventListener('click', () => {
+            patchNotesModal.style.display = 'flex';
+        });
+
+        closePatchNotesBtn.addEventListener('click', () => {
+            patchNotesModal.style.display = 'none';
+        });
+
+        closePatchNotesBtn2.addEventListener('click', () => {
+            patchNotesModal.style.display = 'none';
+        });
+
+        patchNotesModal.addEventListener('click', (e) => {
+            if (e.target === patchNotesModal) {
+                patchNotesModal.style.display = 'none';
+            }
+        });
+
+        // Check if this is the first visit
+        if (!sessionStorage.getItem('welcomeShown') && !localStorage.getItem('skipWelcome')) {
+            // Redirect to welcome page
+            // window.location.href = 'welcome.html';
+            sessionStorage.setItem('welcomeShown', 'true');
+            // Show patch notes on first visit
+            setTimeout(() => {
+                patchNotesModal.style.display = 'flex';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

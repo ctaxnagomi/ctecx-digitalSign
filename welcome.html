@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>CTECX-DigitalSign Welcome</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="favicon-192x192.png">
+    <meta name="theme-color" content="#00d4ff">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .welcome-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        video {
+            max-width: 90vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            object-fit: contain;
+        }
+
+        .overlay-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1s forwards;
+        }
+
+        .logo-display {
+            width: clamp(60px, 15vw, 100px);
+            height: clamp(60px, 15vw, 100px);
+            margin: 0 auto clamp(20px, 3vw, 40px);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 4px;
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .brand-text {
+            font-size: clamp(1.8em, 6vw, 2.8em);
+            font-weight: 700;
+            color: #000;
+            letter-spacing: -0.5px;
+            margin-bottom: clamp(8px, 1vw, 16px);
+        }
+
+        .brand-subtext {
+            font-size: clamp(0.85em, 2vw, 1em);
+            color: #00d4ff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: clamp(24px, 4vw, 40px);
+        }
+
+        .loading-text {
+            font-size: clamp(0.9em, 2vw, 1.1em);
+            color: #666;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .dots {
+            display: inline-block;
+            animation: dots 1.5s steps(4, end) infinite;
+            min-width: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes dots {
+            0%, 20% {
+                content: '';
+            }
+            40% {
+                content: '.';
+            }
+            60% {
+                content: '..';
+            }
+            80%, 100% {
+                content: '...';
+            }
+        }
+
+        .skip-button {
+            position: absolute;
+            bottom: clamp(20px, 4vw, 40px);
+            right: clamp(20px, 4vw, 40px);
+            padding: clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 24px);
+            background: rgba(0, 212, 255, 0.15);
+            color: #00d4ff;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 8px;
+            font-size: clamp(0.8em, 1.5vw, 0.95em);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 20;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out 2s forwards;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skip-button:hover {
+            background: rgba(0, 212, 255, 0.25);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .skip-button:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 768px) {
+            .skip-button {
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+
+            .brand-text {
+                margin-bottom: 8px;
+            }
+
+            .brand-subtext {
+                margin-bottom: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="video-wrapper">
+            <video autoplay loop muted playsinline>
+                <source src="ctex-logo-2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="overlay-content">
+            <div class="logo-display">
+                <img src="ctex-logo.webp" alt="CTECX Logo">
+            </div>
+            <div class="brand-text">CTECX</div>
+            <div class="brand-subtext">DigitalSign</div>
+            <div class="loading-text">Initializing<span class="dots"></span></div>
+        </div>
+        <button class="skip-button" onclick="skipToMain()">Skip ▶</button>
+    </div>
+
+    <script>
+        // Auto redirect after video duration + some time
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 5000);
+
+        function skipToMain() {
+            sessionStorage.setItem('welcomeShown', 'true');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
