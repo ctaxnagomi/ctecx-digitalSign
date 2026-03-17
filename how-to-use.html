@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>How to Use - CTECX-DigitalSign</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <style>
+        .how-to-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: var(--spacing-xl);
+        }
+
+        .how-to-section {
+            margin-bottom: var(--spacing-2xl);
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-sm);
+            padding: var(--spacing-lg);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .how-to-section h2 {
+            color: var(--color-dark);
+            font-size: 1.8em;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .section-icon {
+            font-size: 2em;
+            min-width: 40px;
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: step-counter;
+            padding: 0;
+        }
+
+        .step-item {
+            counter-increment: step-counter;
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md);
+            background: rgba(255, 255, 255, 0.5);
+            border-left: 4px solid var(--color-primary);
+            border-radius: 8px;
+            position: relative;
+            padding-left: var(--spacing-2xl);
+        }
+
+        .step-item::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 50%;
+            margin-left: -22px;
+            margin-top: -12px;
+        }
+
+        .step-item h4 {
+            color: var(--color-dark);
+            font-weight: 700;
+            margin: 0 0 var(--spacing-sm) 0;
+            font-size: 1.1em;
+        }
+
+        .step-item p {
+            color: var(--color-gray-dark);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .step-item code {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--color-primary);
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-sm);
+            padding: var(--spacing-lg);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .feature-card h4 {
+            color: var(--color-dark);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1em;
+        }
+
+        .feature-card p {
+            color: var(--color-gray-dark);
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 168, 204, 0.03) 100%);
+            border-left: 4px solid var(--color-primary);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .tip-box strong {
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .tip-box p {
+            margin: 0;
+            color: var(--color-gray-dark);
+            line-height: 1.6;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .comparison-table th {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--color-dark);
+            font-weight: 700;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .mark {
+            color: #4caf50;
+            font-weight: 700;
+        }
+
+        .unmark {
+            color: #f44336;
+            font-weight: 700;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: var(--spacing-2xl);
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: center;
+            margin-bottom: var(--spacing-2xl);
+            font-size: 0.95em;
+        }
+
+        .breadcrumb a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s ease;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 0.7;
+        }
+
+        .breadcrumb span {
+            color: var(--color-gray-dark);
+            opacity: 0.5;
+        }
+
+        .toc {
+            background: white;
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius-sm);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .toc h3 {
+            color: var(--color-dark);
+            margin-top: 0;
+            font-weight: 700;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .toc a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s ease;
+        }
+
+        .toc a:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .how-to-container {
+                padding: var(--spacing-lg);
+            }
+
+            .how-to-section {
+                padding: var(--spacing-md);
+            }
+
+            .how-to-section h2 {
+                font-size: 1.4em;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .comparison-table {
+                font-size: 0.9em;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: var(--spacing-sm);
+            }
+
+            .breadcrumb {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="glass-morphism">
+            <div class="header-wrapper">
+                <div class="logo-section">
+                    <div class="logo">
+                        <img src="ctex-logo.webp" alt="CTECX Logo" class="logo-image">
+                    </div>
+                    <div class="logo-text-group">
+                        <span class="logo-text">CTECX</span>
+                        <span class="logo-subtext">DigitalSign</span>
+                    </div>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <nav class="nav-menu" id="navMenu">
+                    <a href="index.html#pdpr" class="nav-link">PDPR</a>
+                    <a href="ai-integrated.html" class="nav-link">AI INTEGRATED</a>
+                    <a href="api-services.html" class="nav-link">API Services</a>
+                    <a href="index.html" class="nav-link">Back to Home</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="how-to-container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>›</span>
+                <span>How to Use</span>
+            </div>
+
+            <h1 style="text-align: center; color: var(--color-dark); margin-bottom: var(--spacing-2xl); font-size: 2.5em;">
+                📖 How to Use CTECX-DigitalSign
+            </h1>
+
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h3>📑 Quick Navigation</h3>
+                <ul>
+                    <li><a href="#standard">Standard Digital Signature</a></li>
+                    <li><a href="#ai-integrated">AI-Integrated Digital Signature</a></li>
+                    <li><a href="#features">Features Comparison</a></li>
+                    <li><a href="#tips">Pro Tips & Tricks</a></li>
+                    <li><a href="#faq">Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+
+            <!-- Standard Digital Signature Section -->
+            <div class="how-to-section" id="standard">
+                <h2><span class="section-icon">✍️</span>Standard Digital Signature</h2>
+                
+                <p style="color: var(--color-gray-dark); line-height: 1.8; margin-bottom: var(--spacing-lg);">
+                    Create a professional digital signature directly on our canvas. Perfect for signing documents, contracts, and approvals. Your signature stays local on your device - never stored on our servers.
+                </p>
+
+                <ol class="step-list">
+                    <li class="step-item">
+                        <h4>Open the Signature Canvas</h4>
+                        <p>Go to the home page and scroll down to the "Sign Your Document" section. You'll see a blank canvas ready for your signature.</p>
+                    </li>
+
+                    <li class="step-item">
+                        <h4>Customize Your Pen Settings</h4>
+                        <p>Use the controls on the left:</p>
+                        <ul style="margin-top: var(--spacing-sm); padding-left: 20px; color: var(--color-gray-dark);">
+                            <li><strong>Pen Size:</strong> Adjust from 1 to 20 pixels using the slider</li>
+                            <li><strong>Pen Color:</strong> Click the color picker to choose your preferred color</li>
+                            <li><strong>Background:</strong> Select transparent, white, or light background</li>
+                        </ul>
+                    </li>
+
+                    <li class="step-item">
+                        <h4>Sign on the Canvas</h4>
+                        <p>Click and drag on the white canvas area to draw your signature. Your handwriting will be rendered smoothly with natural curves. You can sign as many times as you like - just use the Clear button to start over.</p>
+                    </li>
+
+                    <li class="step-item">
+                        <h4>Download Your Signature</h4>
+                        <p>Once satisfied with your signature, choose your preferred format:</p>
+                        <ul style="margin-top: var(--spacing-sm); padding-left: 20px; color: var(--color-gray-dark);">
+                            <li><code>PNG</code> - Best quality, supports transparency</li>
+                            <li><code>JPG</code> - Smaller file size, no transparency</li>
+                            <li><code>WebP</code> - Modern format, best compression, transparent</li>
+                        </ul>
+                    </li>
+
+                    <li class="step-item">
+                        <h4>Use Your Signature</h4>
+                        <p>Insert the downloaded signature into documents, emails, contracts, or digital forms. Your signature is now ready for use anywhere.</p>
+                    </li>
+                </ol>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h4>Customize</h4>
+                        <p>Full control over pen size, color, and background to match your style</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Lightning Fast</h4>
+                        <p>Smooth, responsive drawing with zero lag on any device</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📥</div>
+                        <h4>Easy Download</h4>
+                        <p>Export in multiple formats - PNG, JPG, or modern WebP</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h4>Private</h4>
+                        <p>Everything stored locally - your signature never leaves your device</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI-Integrated Section -->
+            <div class="how-to-section" id="ai-integrated">
+                <h2><span class="section-icon">🤖</span>AI-Integrated Digital Signature</h2>
+                
+                <p style="color: var(--color-gray-dark); line-height: 1.8; margin-bottom: var(--spacing-lg);">
+                    Upload a PDF document and let our AI automatically detect signature fields, guide you to the right location, and help you sign your documents efficiently. Perfect for batch document signing and forms.
+                </p>
+
+                <ol class="step-list">
+                    <li class="step-item">
+                        <h4>Navigate to AI-Integrated Signing</h4>
+                        <p>Click "AI INTEGRATED" in the main navigation menu to access the advanced signing tool.</p>
+                    </li>
+
+                    <li class="step-item">
+                        <h4>Upload Your PDF Document</h4>
+                        <p>Click the upload button and select your PDF file. Supported file types:</p>
+                        <ul style="margin-top: var(--spacing-sm); padding-left: 20px; color: var(--color-gray-dark);">
+                            <li>PDF files (.pdf)</li>
+                            <li>Maximum file size: 50MB</li>
+                            <li>Multi-page documents supported</li>
+                        </ul>
+                    </li>
+
+                    <li class="step-item">
+                        <h4>AI Detects Signature Fields</h4>
+                        <p>Our AI analyzes your document and automatically identifies:</p>
+                        <ul style="margin-top: var(--spacing-sm); padding-left: 20px; color: var(--color-gray-dark);">
+                            <li>Signature boxes and lines</li>
+                            <li>Form fields requiring signatures</li>
+                            <li>Common signature locations</li>
+                            <li>Confidence scores for each detection</li>
+                        </ul>
+                    </li>
+
+                    <li class="step-item">
+                        <h4>Review & Adjust Detections</h4>
+                        <p>The AI shows all detected signature fields with green boxes. You can:</p>
+                        <ul style="margin-top: var(--spacing-sm); padding-left: 20px; color: var(--color-gray-dark);">
+                            <li>Accept AI suggestions (click ✓)</li>
+                            <li>Reject incorrect detections (click ✗)</li>
+                            <li>Manually add missing signature fields</li>
+                            <li>Adjust field boundaries if needed</li>
+                        </ul>
+                    </li>
+
+                    <li class="step-item">
+                        <h4>Sign Each Field</h4>
+                        <p>Click on each detected or marked signature field. A signature canvas will appear where you can:</p>
+                        <ul style="margin-top: var(--spacing-sm); padding-left: 20px; color: var(--color-gray-dark);">
+                            <li>Draw your signature</li>
+                            <li>Customize pen settings</li>
+                            <li>Undo and redo as needed</li>
+                            <li>Clear and retry</li>
+                        </ul>
+                    </li>
+
+                    <li class="step-item">
+                        <h4>Review & Confirm</h4>
+                        <p>Review all signatures on the document. Each signature field shows:</p>
+                        <ul style="margin-top: var(--spacing-sm); padding-left: 20px; color: var(--color-gray-dark);">
+                            <li>✅ Status indicator</li>
+                            <li>Signature preview</li>
+                            <li>Timestamp (optional)</li>
+                            <li>Edit option to re-sign</li>
+                        </ul>
+                    </li>
+
+                    <li class="step-item">
+                        <h4>Download Signed Document</h4>
+                        <p>Once all signatures are complete, download your fully signed PDF with all signatures embedded.</p>
+                    </li>
+                </ol>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h4>Auto-Detection</h4>
+                        <p>AI finds signature fields automatically with high accuracy</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📄</div>
+                        <h4>PDF Support</h4>
+                        <p>Upload any PDF and sign directly on the document</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Batch Signing</h4>
+                        <p>Sign multiple fields efficiently in one document</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✨</div>
+                        <h4>Smart Guidance</h4>
+                        <p>AI helps you sign in the right places with visual guidance</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Comparison -->
+            <div class="how-to-section" id="features">
+                <h2><span class="section-icon">⚖️</span>Features Comparison</h2>
+                
+                <p style="color: var(--color-gray-dark); margin-bottom: var(--spacing-lg);">
+                    Choose the signature method that best fits your needs:
+                </p>
+
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Standard Signature</th>
+                            <th>AI-Integrated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Create signature from scratch</td>
+                            <td><span class="mark">✓ Yes</span></td>
+                            <td><span class="mark">✓ Yes</span></td>
+                        </tr>
+                        <tr>
+                            <td>Upload & sign PDF documents</td>
+                            <td><span class="unmark">✗ No</span></td>
+                            <td><span class="mark">✓ Yes</span></td>
+                        </tr>
+                        <tr>
+                            <td>AI field detection</td>
+                            <td><span class="unmark">✗ No</span></td>
+                            <td><span class="mark">✓ Yes</span></td>
+                        </tr>
+                        <tr>
+                            <td>Multiple signatures per document</td>
+                            <td><span class="unmark">✗ No</span></td>
+                            <td><span class="mark">✓ Yes</span></td>
+                        </tr>
+                        <tr>
+                            <td>Download as PNG/JPG/WebP</td>
+                            <td><span class="mark">✓ Yes</span></td>
+                            <td><span class="mark">✓ Yes</span></td>
+                        </tr>
+                        <tr>
+                            <td>Download signed PDF</td>
+                            <td><span class="unmark">✗ No</span></td>
+                            <td><span class="mark">✓ Yes</span></td>
+                        </tr>
+                        <tr>
+                            <td>Customizable pen settings</td>
+                            <td><span class="mark">✓ Yes</span></td>
+                            <td><span class="mark">✓ Yes</span></td>
+                        </tr>
+                        <tr>
+                            <td>Local storage only</td>
+                            <td><span class="mark">✓ Yes</span></td>
+                            <td><span class="mark">✓ Yes</span></td>
+                        </tr>
+                        <tr>
+                            <td>No server uploads</td>
+                            <td><span class="mark">✓ Yes</span></td>
+                            <td><span class="mark">✓ Yes</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pro Tips Section -->
+            <div class="how-to-section" id="tips">
+                <h2><span class="section-icon">💡</span>Pro Tips & Tricks</h2>
+
+                <div class="tip-box">
+                    <strong>💥 Tip 1: Practice Your Signature</strong>
+                    <p>Sign in the same way each time for consistency. Use the Clear button to practice before downloading.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>🎨 Tip 2: Find Your Style</strong>
+                    <p>Experiment with different pen sizes (try 4-8 for most signatures) and colors. Blue and black are more professional.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>🖌️ Tip 3: Smooth Curves</strong>
+                    <p>Move your pen/finger smoothly and deliberately. Avoid jerky movements. Our AI smooths curves automatically.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>📱 Tip 4: Mobile Signing</strong>
+                    <p>Use a stylus or finger. Start from top-left corner and sign from left to right for best results on touchscreens.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>📋 Tip 5: PDF Tips</strong>
+                    <p>For AI-integrated signing, ensure your PDF has clear signature fields. The AI works best with standard document layouts.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>🔒 Tip 6: Privacy First</strong>
+                    <p>Your documents and signatures never leave your device. Clear your browser history periodically for extra security.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>⚡ Tip 7: Performance</strong>
+                    <p>For large PDFs (10+ MB), the AI might take a few seconds. This is normal and ensures accurate detection.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💾 Tip 8: Format Selection</strong>
+                    <p>Use <code>PNG</code> for transparency, <code>JPG</code> for smaller file sizes, or <code>WebP</code> for modern web use.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="how-to-section" id="faq">
+                <h2><span class="section-icon">❓</span>Frequently Asked Questions</h2>
+
+                <div class="tip-box" style="margin-bottom: var(--spacing-lg);">
+                    <strong>Q: Where is my data stored?</strong>
+                    <p><strong style="color: var(--color-primary);">A:</strong> All your signatures and documents are stored <strong>exclusively on your device</strong> in your browser's local storage. We never store anything on our servers. Your privacy is guaranteed.</p>
+                </div>
+
+                <div class="tip-box" style="margin-bottom: var(--spacing-lg);">
+                    <strong>Q: Can I use the same signature multiple times?</strong>
+                    <p><strong style="color: var(--color-primary);">A:</strong> Yes! Download your signature once and use it multiple times across different documents and applications.</p>
+                </div>
+
+                <div class="tip-box" style="margin-bottom: var(--spacing-lg);">
+                    <strong>Q: Is my signature legally binding?</strong>
+                    <p><strong style="color: var(--color-primary);">A:</strong> CTECX-DigitalSign creates valid digital signatures. However, legal validity depends on your jurisdiction and how it's used. Consult local laws for specific use cases.</p>
+                </div>
+
+                <div class="tip-box" style="margin-bottom: var(--spacing-lg);">
+                    <strong>Q: How do I delete my data?</strong>
+                    <p><strong style="color: var(--color-primary);">A:</strong> Simply clear your browser's local storage and cookies. Or use the "Clear All Data" button in Settings. Your data is immediately deleted.</p>
+                </div>
+
+                <div class="tip-box" style="margin-bottom: var(--spacing-lg);">
+                    <strong>Q: Can I edit my signature after signing?</strong>
+                    <p><strong style="color: var(--color-primary);">A:</strong> Yes! In both standard and AI-integrated modes, you can click "Clear" and re-sign. You can also adjust detected fields in AI mode before signing.</p>
+                </div>
+
+                <div class="tip-box" style="margin-bottom: var(--spacing-lg);">
+                    <strong>Q: What PDF file sizes are supported?</strong>
+                    <p><strong style="color: var(--color-primary);">A:</strong> We support PDF files up to 50MB. Larger files will take longer to process with AI detection.</p>
+                </div>
+
+                <div class="tip-box" style="margin-bottom: var(--spacing-lg);">
+                    <strong>Q: Does CTECX track my activity?</strong>
+                    <p><strong style="color: var(--color-primary);">A:</strong> <strong>No.</strong> We use only essential cookies. We don't track, profile, or analyze your behavior. See our PDPR Policy for details.</p>
+                </div>
+
+                <div class="tip-box" style="margin-bottom: var(--spacing-lg);">
+                    <strong>Q: Can I use this offline?</strong>
+                    <p><strong style="color: var(--color-primary);">A:</strong> Yes! The standard signature tool works completely offline. AI-integrated signing requires internet for the first load but works offline after that.</p>
+                </div>
+
+                <div class="tip-box" style="margin-bottom: var(--spacing-lg);">
+                    <strong>Q: Which browsers are supported?</strong>
+                    <p><strong style="color: var(--color-primary);">A:</strong> Chrome, Firefox, Safari, Edge, and any modern browser supporting HTML5 Canvas. Works on desktop, tablet, and mobile.</p>
+                </div>
+
+                <div class="tip-box">
+                    <strong>Q: How can I provide feedback or report issues?</strong>
+                    <p><strong style="color: var(--color-primary);">A:</strong> Visit our GitHub repository or email us at support@ctecx.com. We'd love to hear from you!</p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div style="text-align: center; margin-top: var(--spacing-2xl); padding: var(--spacing-2xl); background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 168, 204, 0.03) 100%); border-radius: var(--border-radius-sm); border: 2px solid rgba(0, 212, 255, 0.15);">
+                <h3 style="color: var(--color-dark); margin-top: 0; font-size: 1.4em;">Ready to Sign Your Documents?</h3>
+                <p style="color: var(--color-gray-dark); margin-bottom: var(--spacing-lg);">Choose your preferred signing method and get started in seconds.</p>
+                
+                <div class="cta-buttons">
+                    <a href="index.html" class="btn btn-primary" style="text-decoration: none;">
+                        <span class="icon">✍️</span>
+                        <span>Standard Signature</span>
+                    </a>
+                    <a href="ai-integrated.html" class="btn btn-primary" style="text-decoration: none;">
+                        <span class="icon">🤖</span>
+                        <span>AI-Integrated Signing</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="glass-morphism">
+            <p>&copy; 2026 CTECX-DigitalSign | <a href="#" style="color: inherit; text-decoration: none; opacity: 0.7;">Privacy Policy</a> | <a href="#" style="color: inherit; text-decoration: none; opacity: 0.7;">Terms</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle Handler
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            const navLinks = navMenu.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('header')) {
+                    mobileMenuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

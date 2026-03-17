@@ -44,7 +44,7 @@ function initVisitorCarousel() {
 
 // Get canvas and context
 const canvas = document.getElementById('signatureCanvas');
-const ctx = canvas.getContext('2d', { willReadFrequently: true });
+const ctx = canvas.getContext('2d', { willReadFrequently: true, alpha: true });
 
 // Get UI elements
 const penSize = document.getElementById('penSize');
@@ -63,18 +63,31 @@ let lastX = 0;
 let lastY = 0;
 let currentBgColor = 'transparent';
 
-// Initialize canvas with proper sizing
+// Smooth drawing with curve interpolation
+let curvePoints = [];
+let lastRenderX = 0;
+let lastRenderY = 0;
+
+// Initialize canvas with proper sizing and optimization
 function initCanvas() {
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
     
+    // Set canvas resolution based on device pixel ratio for sharp rendering
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
     
+    // Scale context to maintain CSS size
     ctx.scale(dpr, dpr);
+    
+    // Optimize drawing context
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
+    ctx.miterLimit = 10;
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     
+    // Set canvas background
     setBackgroundColor('transparent');
 }
 
@@ -109,6 +122,7 @@ backgroundColor.addEventListener('change', (e) => {
 // Start drawing
 function startDrawing(e) {
     isDrawing = true;
+    curvePoints = [];
     const rect = canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
     
@@ -120,6 +134,10 @@ function startDrawing(e) {
         lastX = (e.clientX - rect.left) * dpr;
         lastY = (e.clientY - rect.top) * dpr;
     }
+    
+    lastRenderX = lastX;
+    lastRenderY = lastY;
+    curvePoints.push({ x: lastX, y: lastY });
 }
 
 canvas.addEventListener('mousedown', startDrawing, { passive: false });
@@ -128,18 +146,33 @@ canvas.addEventListener('touchstart', (e) => {
     startDrawing(e);
 }, { passive: false });
 
-// Draw function
-function draw(x, y) {
+// Smooth Bezier curve drawing function
+function drawSmooth(x, y) {
     if (!isDrawing) return;
+    
+    curvePoints.push({ x, y });
     
     ctx.strokeStyle = penColor.value;
     ctx.lineWidth = penSize.value;
+    ctx.globalAlpha = 0.95;
     
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
-    ctx.lineTo(x, y);
-    ctx.stroke();
+    if (curvePoints.length > 2) {
+        // Draw smooth quadratic curve through points
+        const len = curvePoints.length;
+        
+        if (len > 3) {
+            const p1 = curvePoints[len - 3];
+            const p2 = curvePoints[len - 2];
+            const p3 = curvePoints[len - 1];
+            
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.quadraticCurveTo(p2.x, p2.y, p3.x, p3.y);
+            ctx.stroke();
+        }
+    }
     
+    ctx.globalAlpha = 1.0;
     lastX = x;
     lastY = y;
 }
@@ -150,7 +183,7 @@ canvas.addEventListener('mousemove', (e) => {
     const dpr = window.devicePixelRatio || 1;
     const x = (e.clientX - rect.left) * dpr;
     const y = (e.clientY - rect.top) * dpr;
-    draw(x, y);
+    drawSmooth(x, y);
 }, { passive: true });
 
 // Touch move
@@ -161,12 +194,13 @@ canvas.addEventListener('touchmove', (e) => {
     const touch = e.touches[0];
     const x = (touch.clientX - rect.left) * dpr;
     const y = (touch.clientY - rect.top) * dpr;
-    draw(x, y);
+    drawSmooth(x, y);
 }, { passive: false });
 
 // Stop drawing
 function stopDrawing() {
     isDrawing = false;
+    curvePoints = [];
 }
 
 canvas.addEventListener('mouseup', stopDrawing, { passive: true });
@@ -276,3 +310,31 @@ document.addEventListener('DOMContentLoaded', () => {
     initVisitorCarousel();
 }, { passive: true });
 initCanvas();
+
+// Mobile Menu Toggle Handler
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const navMenu = document.getElementById('navMenu');
+
+if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    const navLinks = navMenu.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('header')) {
+            mobileMenuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+}

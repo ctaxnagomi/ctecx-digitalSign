@@ -29,14 +29,19 @@
                         <span class="logo-subtext">DigitalSign</span>
                     </div>
                 </div>
-                <nav class="nav-menu">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <nav class="nav-menu" id="navMenu">
                     <a href="#pdpr" class="nav-link">PDPR</a>
                     <a href="ai-integrated.html" class="nav-link">AI INTEGRATED</a>
                     <a href="api-services.html" class="nav-link">API Services</a>
                     <button id="patchNotesBtn" class="nav-link nav-button" title="View latest patch notes">
                         <span class="badge new-badge">NEW</span> Patch Notes
                     </button>
-                    <a href="#how-to-use" class="nav-link">How to Use</a>
+                    <a href="how-to-use.html" class="nav-link">How to Use</a>
                 </nav>
             </div>
         </header>
@@ -120,6 +125,78 @@
                 </button>
             </div>
         </div>
+
+        <section id="pdpr" class="pdpr-section">
+            <div class="pdpr-container glass-morphism">
+                <h2>🔒 Privacy & Data Protection</h2>
+                <div class="pdpr-content">
+                    <div class="pdpr-highlight">
+                        <h3>Your Data, Your Control</h3>
+                        <p>CTECX-DigitalSign is built on a simple principle: <strong>your data belongs to you.</strong></p>
+                    </div>
+                    
+                    <div class="pdpr-grid">
+                        <div class="pdpr-card">
+                            <div class="pdpr-icon">📁</div>
+                            <h4>Local Storage Only</h4>
+                            <p>All PDFs and signatures stored exclusively on <strong>your device</strong>. Never on our servers.</p>
+                        </div>
+                        <div class="pdpr-card">
+                            <div class="pdpr-icon">🍪</div>
+                            <h4>Essential Cookies Only</h4>
+                            <p>Zero tracking cookies. Only <strong>minimal essential cookies</strong> for core functionality.</p>
+                        </div>
+                        <div class="pdpr-card">
+                            <div class="pdpr-icon">🚫</div>
+                            <h4>No Tracking</h4>
+                            <p>No analytics, no profiling, no behavioral tracking. <strong>Full transparency</strong> always.</p>
+                        </div>
+                        <div class="pdpr-card">
+                            <div class="pdpr-icon">🔐</div>
+                            <h4>No Data Sharing</h4>
+                            <p>Your data is <strong>never shared</strong> with third parties, advertisers, or data brokers.</p>
+                        </div>
+                    </div>
+
+                    <div class="pdpr-details">
+                        <h3>What We Collect</h3>
+                        <div class="pdpr-table">
+                            <div class="pdpr-row">
+                                <div class="pdpr-col-label">Local Storage (Your Device)</div>
+                                <div class="pdpr-col-value">✅ Indefinite storage</div>
+                            </div>
+                            <div class="pdpr-row">
+                                <div class="pdpr-col-label">Essential Cookies</div>
+                                <div class="pdpr-col-value">✅ Session, preferences only</div>
+                            </div>
+                            <div class="pdpr-row">
+                                <div class="pdpr-col-label">Tracking Cookies</div>
+                                <div class="pdpr-col-value">❌ None</div>
+                            </div>
+                            <div class="pdpr-row">
+                                <div class="pdpr-col-label">Analytics</div>
+                                <div class="pdpr-col-value">❌ None</div>
+                            </div>
+                            <div class="pdpr-row">
+                                <div class="pdpr-col-label">Personal Data</div>
+                                <div class="pdpr-col-value">❌ Not requested</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pdpr-cta">
+                        <a href="PDPR_PRIVACY_POLICY.md" class="btn btn-primary" target="_blank">
+                            <span class="icon">📄</span>
+                            <span>Read Full PDPR Policy</span>
+                        </a>
+                        <button id="privacySettingsBtn" class="btn btn-secondary">
+                            <span class="icon">⚙️</span>
+                            <span>Privacy Settings</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <footer class="glass-morphism">
             <p>&copy; 2026 CTECX-DigitalSign</p>

@@ -156,6 +156,37 @@ header {
     word-break: break-word;
 }
 
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+}
+
+.hamburger {
+    width: 24px;
+    height: 3px;
+    background: var(--color-dark);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-toggle.active .hamburger:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.mobile-menu-toggle.active .hamburger:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 .nav-menu {
     display: flex;
     gap: clamp(var(--spacing-sm), 2vw, var(--spacing-lg));
@@ -668,6 +699,7 @@ header {
     align-items: center;
     justify-content: center;
     min-width: 0;
+    position: relative;
 }
 
 .canvas-wrapper {
@@ -678,25 +710,38 @@ header {
     justify-content: center;
     position: relative;
     min-height: 400px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
 }
 
 #signatureCanvas {
-    border: 2px solid var(--glass-border);
-    border-radius: var(--border-radius-sm);
+    border: 3px solid var(--glass-border);
+    border-radius: 12px;
     background: white;
     cursor: crosshair;
     max-width: 100%;
-    max-height: 100%;
+    max-height: calc(100% - 20px);
     height: auto;
     aspect-ratio: 16 / 9;
     box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05), 0 8px 20px rgba(0, 212, 255, 0.1);
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: block;
+    position: relative;
+    margin: auto;
+    will-change: box-shadow;
+    image-rendering: crisp-edges;
 }
 
 #signatureCanvas:hover {
     border-color: var(--color-primary);
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05), 0 12px 30px rgba(0, 212, 255, 0.2);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05), 0 12px 30px rgba(0, 212, 255, 0.25);
+    transform: scale(1.01);
+}
+
+#signatureCanvas:focus {
+    outline: none;
+    border-color: var(--color-primary);
 }
 
 .download-section {
@@ -723,6 +768,160 @@ header {
 
 .download-buttons .btn {
     min-width: clamp(100px, 20vw, 140px);
+}
+
+/* PDPR Section */
+.pdpr-section {
+    padding: clamp(var(--spacing-xl), 6vw, var(--spacing-2xl)) var(--spacing-md);
+    border-top: 1px solid var(--glass-border);
+    width: 100%;
+}
+
+.pdpr-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(var(--spacing-lg), 4vw, var(--spacing-2xl));
+}
+
+.pdpr-container h2 {
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-xl);
+    font-size: clamp(1.8em, 5vw, 2.2em);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+.pdpr-highlight {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 168, 204, 0.03) 100%);
+    border: 2px solid rgba(0, 212, 255, 0.15);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-lg);
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+}
+
+.pdpr-highlight h3 {
+    color: var(--color-dark);
+    font-size: 1.3em;
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+}
+
+.pdpr-highlight p {
+    color: var(--color-gray-dark);
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.pdpr-highlight strong {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.pdpr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.pdpr-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.pdpr-card:hover {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
+    transform: translateY(-4px);
+}
+
+.pdpr-icon {
+    font-size: 2.5em;
+    margin-bottom: var(--spacing-md);
+    display: block;
+}
+
+.pdpr-card h4 {
+    color: var(--color-dark);
+    font-size: 1.1em;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.pdpr-card p {
+    color: var(--color-gray-dark);
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.pdpr-card strong {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.pdpr-details {
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.pdpr-details h3 {
+    color: var(--color-dark);
+    font-size: 1.2em;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+}
+
+.pdpr-table {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.pdpr-row {
+    display: flex;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    align-items: center;
+}
+
+.pdpr-col-label {
+    flex: 1;
+    color: var(--color-gray-dark);
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+.pdpr-col-value {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.95em;
+    white-space: nowrap;
+}
+
+.pdpr-cta {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pdpr-cta .btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
 footer {
@@ -798,8 +997,62 @@ footer p {
     }
 
     .header-wrapper {
-        flex-direction: column;
+        flex-direction: row;
         gap: var(--spacing-md);
+        align-items: center;
+        position: relative;
+    }
+
+    .logo-section {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--glass-bg);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--glass-border);
+        border-top: 1px solid var(--glass-border);
+        border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: var(--spacing-md) 0;
+        display: none;
+        width: 100%;
+        z-index: 999;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: var(--spacing-md) var(--spacing-lg);
+        margin: 0;
+        font-size: 0.85em;
+        border-radius: 0;
+        white-space: normal;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        text-align: left;
+        transition: background 0.2s ease;
+    }
+
+    .nav-link:hover {
+        background: rgba(0, 212, 255, 0.15);
+        border-radius: 0;
     }
 
     .hero-section {
@@ -892,6 +1145,69 @@ footer p {
 
     .download-buttons .btn span:last-child {
         display: inline;
+    }
+
+    .pdpr-section {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .pdpr-container {
+        padding: var(--spacing-lg);
+    }
+
+    .pdpr-container h2 {
+        font-size: 1.4em;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .pdpr-highlight {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .pdpr-highlight h3 {
+        font-size: 1.1em;
+    }
+
+    .pdpr-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .pdpr-card {
+        padding: var(--spacing-md);
+    }
+
+    .pdpr-icon {
+        font-size: 2em;
+    }
+
+    .pdpr-details {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .pdpr-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+
+    .pdpr-col-value {
+        width: 100%;
+        text-align: right;
+    }
+
+    .pdpr-cta {
+        gap: var(--spacing-sm);
+    }
+
+    .pdpr-cta .btn {
+        flex: 1;
+        justify-content: center;
+        min-width: 100px;
     }
 
     footer {
